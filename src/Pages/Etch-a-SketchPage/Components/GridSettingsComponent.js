@@ -4,7 +4,7 @@ const GridSettingsComponent = () => {
   return (
     <div className={classes["grid-settings"]}>
       <div className={classes["slider-div"]}>
-        <label for="grid-def-slider">Set Grid Definition:</label>
+        <label htmlFor="grid-def-slider">Set Grid Definition:</label>
         <input
           name="grid-def-slider"
           type="range"

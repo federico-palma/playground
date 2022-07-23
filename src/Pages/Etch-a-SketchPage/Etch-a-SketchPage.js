@@ -5,14 +5,16 @@ import classes from "./Etch-a-SketchPage.module.css";
 
 const EtchASketchPage = () => {
   return (
-    <main className={classes.main}>
-      <h1 id="title">Etch-a-Sketch</h1>
-      <ColorSettingsComponent />
+    <div className={classes.background}>
+      <main className={classes.main}>
+        <h1 id={classes.title} >Etch-a-Sketch</h1>
+        <ColorSettingsComponent />
 
-      <ScreenComponent />
-      
-      <GridSettingsComponent />
-    </main>
+        <ScreenComponent />
+
+        <GridSettingsComponent />
+      </main>
+    </div>
   );
 };
 
