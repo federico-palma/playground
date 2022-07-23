@@ -4,7 +4,7 @@ const ColorSettingsComponent = (props) => {
   return (
     <div className={classes["color-settings"]}>
       <input type="color" id="colorPicker" className={classes["colorPicker"]} />
-      <button className={classes["btn-mode btn-active"]} id="btn-color-mode">
+      <button className={`${classes["btn-mode"]} ${classes["btn-active"]}`} >
         Color
       </button>
       <button className={classes["btn-mode"]} id="btn-rainbow-mode">
