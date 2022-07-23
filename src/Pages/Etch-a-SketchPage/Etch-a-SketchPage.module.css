@@ -1,0 +1,115 @@
+.main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 50px;
+    border: solid 3px black;
+    box-shadow: 3px 3px 10px black;
+    border-radius: 10px;
+    width: 80%;
+    padding: 15px;
+    background-color: #ee1f1fe7;
+}
+
+/* Screen and Grid */
+#screen {
+    margin: auto;
+    width: 550px;
+    height: 550px;
+    border: 3px black solid;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: #ffffff;
+}
+
+#grid-container {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.grid-cell {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+/* Color Settings */
+#color-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    margin: auto;
+}
+
+#colorPicker {
+    margin: 10px;
+    background-color: transparent;
+    border: 2px black solid;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch {
+	border-radius: 50%;
+}
+
+.btn-mode {
+    width: 90%;
+    height: 40px;
+    margin: 5px;
+    background-color: #f1f1f1;
+    border: 1px black solid;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+/* Grid Settings */
+#grid-settings {
+    width: 15%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#slider-div {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#grid-def-slider {
+    width: 100%;
+    height: 30px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#btn-clear {
+    width: 90%;
+    height: 40px;
+    font-size: 1.3rem;
+    margin: 5px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+    border: 1px black solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
