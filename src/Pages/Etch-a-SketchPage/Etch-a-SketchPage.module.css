@@ -20,6 +20,7 @@
   border: solid 3px black;
   box-shadow: 3px 3px 10px black;
   border-radius: 10px;
+  min-width: fit-content;
   width: 80%;
   padding: 15px;
   background-color: #ee1f1fe7;
@@ -33,6 +34,7 @@
   transform: rotate(-25deg);
   color: rgb(224, 191, 0);
   font-size: 2.5rem;
+  word-wrap: break-word;
 }
 
 /* Screen and Grid */
@@ -134,8 +136,7 @@ input[type="color"]::-webkit-color-swatch {
 .btn-clear {
   font-family: inherit;
   width: 90%;
-  height: 40px;
-  min-height: fit-content;
+  height: 60px;
   font-size: 1.3rem;
   margin: 5px;
   margin-top: 10px;
@@ -196,5 +197,65 @@ input[type="color"]::-webkit-color-swatch {
   }
   100% {
     opacity: 0;
+  }
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1300px) {
+  #title {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .screen {
+    width: 450px;
+    height: 450px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .screen {
+    width: 350px;
+    height: 350px;
+  }
+  .btn-mode {
+    font-size: 1rem;
+  }
+  .slider-div {
+    font-size: 1rem;
+  }
+  .btn-clear {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 650px) {
+  .screen {
+    width: 250px;
+    height: 250px;
+  }
+  .btn-mode {
+    font-size: 0.8rem;
+  }
+  .slider-div {
+    font-size: 0.8rem;
+  }
+  .btn-clear {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 570px) {
+  .screen {
+    width: 200px;
+    height: 200px;
+  }
+  .btn-mode {
+    font-size: 0.6rem;
+  }
+  .slider-div {
+    font-size: 0.6rem;
+  }
+  .btn-clear {
+    font-size: 0.6rem;
   }
 }
