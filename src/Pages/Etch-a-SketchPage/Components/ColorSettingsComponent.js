@@ -1,7 +1,6 @@
 import classes from "../Etch-a-SketchPage.module.css";
 
 const ColorSettingsComponent = (props) => {
-
   return (
     <div className={classes["color-settings"]}>
       <input
@@ -9,19 +8,41 @@ const ColorSettingsComponent = (props) => {
         className={classes["colorPicker"]}
         onChange={(e) => {
           props.handleChangeColorMode("color", e.target.value);
-          console.log(e.target.value)
         }}
       />
-      <button className={`${classes["btn-mode"]} ${classes["btn-active"]}`}>
+      <button
+        className={`${classes["btn-mode"]} ${classes["btn-active"]}`}
+        onClick={() => {
+          props.handleChangeColorMode("color");
+        }}
+      >
         Color
       </button>
-      <button className={classes["btn-mode"]} id="btn-rainbow-mode">
+      <button
+        className={classes["btn-mode"]}
+        id="btn-rainbow-mode"
+        onClick={() => {
+          props.handleChangeColorMode("rainbow");
+        }}
+      >
         Rainbow
       </button>
-      <button className={classes["btn-mode"]} id="btn-grayscale-mode">
+      <button
+        className={classes["btn-mode"]}
+        id="btn-grayscale-mode"
+        onClick={() => {
+          props.handleChangeColorMode("greyscale");
+        }}
+      >
         Grayscale
       </button>
-      <button className={classes["btn-mode"]} id="btn-eraser-mode">
+      <button
+        className={classes["btn-mode"]}
+        id="btn-eraser-mode"
+        onClick={() => {
+          props.handleChangeColorMode("eraser");
+        }}
+      >
         Eraser
       </button>
     </div>

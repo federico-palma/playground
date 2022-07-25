@@ -7,8 +7,10 @@ import classes from "./Etch-a-SketchPage.module.css";
 const EtchASketchPage = () => {
   const [currentColorMode, setCurrentColorMode] = useState(["color", "#000000"]);
 
-  const handleChangeColorMode = (newColorMode, newColor) => {
+  const handleChangeColorMode = (newColorMode, newColor = currentColorMode[1]) => {
     setCurrentColorMode([newColorMode, newColor])
+    console.log(newColorMode)
+    console.log(newColor)
   }
 
   return (
