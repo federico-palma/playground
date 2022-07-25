@@ -1,6 +1,6 @@
 import classes from "../Etch-a-SketchPage.module.css";
 
-const GridSettingsComponent = () => {
+const GridSettingsComponent = (props) => {
   return (
     <div className={classes["grid-settings"]}>
       <div className={classes["slider-div"]}>
@@ -13,7 +13,7 @@ const GridSettingsComponent = () => {
           max="100"
         />
       </div>
-      <button className={classes["btn-clear"]}>Clear Board</button>
+      <button className={classes["btn-clear"]} onClick={props.handleClearBoard}>Clear Board</button>
     </div>
   );
 };

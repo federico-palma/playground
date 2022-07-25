@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import classes from "../Etch-a-SketchPage.module.css";
 
 const ScreenComponent = (props) => {
-  const [screenDefinition, setScreenDefinition] = useState(16);
+  useEffect(() => {
+    console.log('loglog')
+    let boardCells = document.getElementsByClassName('cell')
+    for (let i = 0; i < boardCells.length; i++) {
+      boardCells[i].style.backgroundColor = 'white';
+  }
+  }, [props.screenDefinition, props.triggerClearBoard]);
 
   const getRandomColor = () => {
     let letters = "0123456789ABCDEF";
@@ -41,7 +47,9 @@ const ScreenComponent = (props) => {
         break;
 
       case "greyscale":
-        targetElement.style = `background-color: ${greyscaleFunction(targetElement.style.backgroundColor)}`;
+        targetElement.style = `background-color: ${greyscaleFunction(
+          targetElement.style.backgroundColor
+        )}`;
         break;
 
       case "eraser":
@@ -58,14 +66,14 @@ const ScreenComponent = (props) => {
       <div
         className={classes["grid-container"]}
         style={{
-          gridTemplateRows: `repeat(${screenDefinition}, 1fr)`,
-          gridTemplateColumns: `repeat(${screenDefinition}, 1fr)`,
+          gridTemplateRows: `repeat(${props.screenDefinition}, 1fr)`,
+          gridTemplateColumns: `repeat(${props.screenDefinition}, 1fr)`,
         }}
       >
-        {[...Array(screenDefinition * screenDefinition)].map((n, i) => {
+        {[...Array(props.screenDefinition * props.screenDefinition)].map((n, i) => {
           return (
             <div
-              className={classes["grid-cell"]}
+              className={`${classes["grid-cell"]} cell`}
               onMouseEnter={(e) => {
                 changeColor(e.target);
               }}
