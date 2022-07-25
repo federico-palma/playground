@@ -31,7 +31,6 @@ const ScreenComponent = (props) => {
   }
 
   const changeColor = (targetElement) => {
-    console.log(targetElement)
     switch (props.currentColorMode) {
       case "color":
         targetElement.style = `background-color: ${props.currentColor}`;
