@@ -88,6 +88,7 @@ input[type="color"]::-webkit-color-swatch {
 .btn-mode {
   font-family: inherit;
   width: 90%;
+  min-width: fit-content;
   height: 40px;
   margin: 5px;
   background-color: #f1f1f1;
@@ -250,12 +251,12 @@ input[type="color"]::-webkit-color-swatch {
     height: 200px;
   }
   .btn-mode {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
   .slider-div {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
   .btn-clear {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 }
