@@ -5,11 +5,13 @@ const ScreenComponent = (props) => {
   useEffect(() => {
     let boardCells = document.getElementsByClassName("cell");
     if (props.triggerClearBoard) {
-      for (let i = 0; i < boardCells.length; i++) {
-        boardCells[i].style.backgroundColor = "white";
-      }
+      setTimeout(() => {
+        for (let i = 0; i < boardCells.length; i++) {
+          boardCells[i].style.backgroundColor = "white";
+        }
+      }, 1300)
     }
-  }, [props.screenDefinition, props.triggerClearBoard]);
+  }, [props.triggerClearBoard]);
 
   const getRandomColor = () => {
     let letters = "0123456789ABCDEF";
@@ -65,7 +67,7 @@ const ScreenComponent = (props) => {
   return (
     <div className={classes.screen}>
       <div
-        className={classes["grid-container"]}
+        className={`${classes["grid-container"]} ${props.triggerClearBoard && classes['fadeOut-anim']}`} 
         style={{
           gridTemplateRows: `repeat(${props.screenDefinition}, 1fr)`,
           gridTemplateColumns: `repeat(${props.screenDefinition}, 1fr)`,
