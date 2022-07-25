@@ -11,7 +11,7 @@ const ColorSettingsComponent = (props) => {
         }}
       />
       <button
-        className={`${classes["btn-mode"]} ${classes["btn-active"]}`}
+        className={`${classes["btn-mode"]} ${props.currentColorMode === "color" ? classes["btn-active"] : ''}`}
         onClick={() => {
           props.handleChangeColorMode("color");
         }}
@@ -19,7 +19,7 @@ const ColorSettingsComponent = (props) => {
         Color
       </button>
       <button
-        className={classes["btn-mode"]}
+        className={`${classes["btn-mode"]} ${props.currentColorMode === "rainbow" ? classes["btn-active"] : ''}`}
         id="btn-rainbow-mode"
         onClick={() => {
           props.handleChangeColorMode("rainbow");
@@ -28,16 +28,16 @@ const ColorSettingsComponent = (props) => {
         Rainbow
       </button>
       <button
-        className={classes["btn-mode"]}
+        className={`${classes["btn-mode"]} ${props.currentColorMode === "greyscale" ? classes["btn-active"] : ''}`}
         id="btn-grayscale-mode"
         onClick={() => {
           props.handleChangeColorMode("greyscale");
         }}
       >
-        Grayscale
+        Greyscale
       </button>
       <button
-        className={classes["btn-mode"]}
+        className={`${classes["btn-mode"]} ${props.currentColorMode === "eraser" ? classes["btn-active"] : ''}`}
         id="btn-eraser-mode"
         onClick={() => {
           props.handleChangeColorMode("eraser");

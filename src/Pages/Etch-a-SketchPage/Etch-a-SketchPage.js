@@ -9,15 +9,13 @@ const EtchASketchPage = () => {
 
   const handleChangeColorMode = (newColorMode, newColor = currentColorMode[1]) => {
     setCurrentColorMode([newColorMode, newColor])
-    console.log(newColorMode)
-    console.log(newColor)
   }
 
   return (
     <div className={classes.background}>
       <main className={classes.main}>
         <h1 id={classes.title}>Etch-a-Sketch</h1>
-        <ColorSettingsComponent handleChangeColorMode={handleChangeColorMode}/>
+        <ColorSettingsComponent currentColorMode={ currentColorMode[0] } handleChangeColorMode={handleChangeColorMode}/>
 
         <ScreenComponent currentColorMode={ currentColorMode[0] } currentColor={ currentColorMode[1] } />
 
