@@ -24,7 +24,12 @@ const EtchASketchPage = () => {
   };
 
   const handleChangeScreenDefinition = (newDef) => {
-    handleClearBoard()
+    let timeout
+    timeout && clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      handleClearBoard();
+      setScreenDefinition(newDef); 
+    }, 500);
   };
 
   return (

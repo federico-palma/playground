@@ -3,7 +3,6 @@ import classes from "../Etch-a-SketchPage.module.css";
 
 const ScreenComponent = (props) => {
   useEffect(() => {
-    console.log('loglog')
     let boardCells = document.getElementsByClassName('cell')
     for (let i = 0; i < boardCells.length; i++) {
       boardCells[i].style.backgroundColor = 'white';

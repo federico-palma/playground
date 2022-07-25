@@ -11,6 +11,7 @@ const GridSettingsComponent = (props) => {
           className={classes["grid-def-slider"]}
           min="16"
           max="100"
+          onChange={(e) => props.handleChangeScreenDefinition(e.target.value)}
         />
       </div>
       <button className={classes["btn-clear"]} onClick={props.handleClearBoard}>Clear Board</button>
