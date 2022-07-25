@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ColorSettingsComponent from "./Components/ColorSettingsComponent";
 import GridSettingsComponent from "./Components/GridSettingsComponent";
 import ScreenComponent from "./Components/ScreenComponent";
 import classes from "./Etch-a-SketchPage.module.css";
 
 const EtchASketchPage = () => {
+  useEffect(() => {
+    document.title = "PlayGround | Etch-a-Sketch"
+  }, [])
+
   const [screenDefinition, setScreenDefinition] = useState(16);
   const [currentColorMode, setCurrentColorMode] = useState([
     "color",
