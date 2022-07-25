@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ColorSettingsComponent from "./Components/ColorSettingsComponent";
 import GridSettingsComponent from "./Components/GridSettingsComponent";
 import ScreenComponent from "./Components/ScreenComponent";
@@ -10,7 +10,7 @@ const EtchASketchPage = () => {
     "color",
     "#000000",
   ]);
-  const [triggerClearBoard, setTriggerClearBoard] = useState();
+  const [triggerClearBoard, setTriggerClearBoard] = useState(false);
 
   const handleChangeColorMode = (
     newColorMode,
@@ -23,10 +23,11 @@ const EtchASketchPage = () => {
     setTriggerClearBoard((prevState) => !prevState);
   };
 
+  let screenDefTimeout
+
   const handleChangeScreenDefinition = (newDef) => {
-    let timeout
-    timeout && clearTimeout(timeout);
-    timeout = setTimeout(() => {
+    screenDefTimeout && clearTimeout(screenDefTimeout);
+    screenDefTimeout = setTimeout(() => {
       handleClearBoard();
       setScreenDefinition(newDef); 
     }, 500);

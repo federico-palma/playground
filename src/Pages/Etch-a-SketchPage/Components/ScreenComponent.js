@@ -3,10 +3,12 @@ import classes from "../Etch-a-SketchPage.module.css";
 
 const ScreenComponent = (props) => {
   useEffect(() => {
-    let boardCells = document.getElementsByClassName('cell')
-    for (let i = 0; i < boardCells.length; i++) {
-      boardCells[i].style.backgroundColor = 'white';
-  }
+    let boardCells = document.getElementsByClassName("cell");
+    if (props.triggerClearBoard) {
+      for (let i = 0; i < boardCells.length; i++) {
+        boardCells[i].style.backgroundColor = "white";
+      }
+    }
   }, [props.screenDefinition, props.triggerClearBoard]);
 
   const getRandomColor = () => {
@@ -69,17 +71,19 @@ const ScreenComponent = (props) => {
           gridTemplateColumns: `repeat(${props.screenDefinition}, 1fr)`,
         }}
       >
-        {[...Array(props.screenDefinition * props.screenDefinition)].map((n, i) => {
-          return (
-            <div
-              className={`${classes["grid-cell"]} cell`}
-              onMouseEnter={(e) => {
-                changeColor(e.target);
-              }}
-              key={i}
-            ></div>
-          );
-        })}
+        {[...Array(props.screenDefinition * props.screenDefinition)].map(
+          (n, i) => {
+            return (
+              <div
+                className={`${classes["grid-cell"]} cell`}
+                onMouseEnter={(e) => {
+                  changeColor(e.target);
+                }}
+                key={i}
+              ></div>
+            );
+          }
+        )}
       </div>
     </div>
   );
