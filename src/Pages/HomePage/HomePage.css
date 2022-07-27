@@ -1,8 +1,15 @@
+.homepage-container {
+  margin: 0px;
+  margin-top: 75px;
+  height: calc(100vh - 75px);
+  background-color: rgb(69, 113, 149);
+}
+
 .card-list {
-    display: flex;
-    flex-direction: row;
-    border: solid 1px black;
-    align-items: center;
-    justify-content: center;
-    margin-top: 75px;
-  }
+  padding-top: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
