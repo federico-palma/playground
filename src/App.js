@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 import EtchASketchPage from "./Pages/Etch-a-SketchPage/Etch-a-SketchPage";
 import { useEffect } from "react";
+import Header from "./Components/Header";
 
 function App() {
   useEffect(() => {
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Switch>
         <Route path='/' exact>
           <HomePage />
