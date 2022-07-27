@@ -1,8 +1,26 @@
 .card-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 200px;
   height: 200px;
-  border: 2px solid blue;
   margin: 20px;
+  background-color: #416979;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
+  transition: all 0.5s;
+}
+
+
+.card-container:hover {
+  transform: scale(107%);
+}
+
+.card-container:active {
+  transform: scale(100%);
+}
+
+.card-title {
+  color: white;
 }
