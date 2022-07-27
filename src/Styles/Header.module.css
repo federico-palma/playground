@@ -1,0 +1,21 @@
+.header {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 75px;
+  background: #264653;
+  transition: all 0.5s;
+}
+
+.title {
+    color: rgb(255, 255, 255);
+}
+
+.homepage {
+    background-color: #264653;
+}
+
+.eas {
+    background-color: #e76f51;
+}
