@@ -10,6 +10,8 @@ const Header = () => {
               return classes.homepage
           case '/Etch-a-Sketch':
               return classes.eas
+          case '/Memory-Match':
+              return classes["memory-match"]
       
           default:
               break;
