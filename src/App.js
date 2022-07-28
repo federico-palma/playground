@@ -3,7 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 import EtchASketchPage from "./Pages/Etch-a-SketchPage/Etch-a-SketchPage";
 import { useEffect } from "react";
-import Header from "./Components/Header";
+import Header from "./Layout/Header";
+import MemoryMatchPage from "./Pages/Memory-MatchPage/Memory-MatchPage";
 
 function App() {
   useEffect(() => {
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route path='/Etch-a-Sketch' exact>
           <EtchASketchPage />
+        </Route>
+        <Route path='/Memory-Match' exact>
+          <MemoryMatchPage />
         </Route>
 
       </Switch>
