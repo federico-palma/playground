@@ -9,7 +9,7 @@ const EtchASketchPage = () => {
     document.title = "PlayGround | Etch-a-Sketch"
   }, [])
 
-  const [screenDefinition, setScreenDefinition] = useState(16);
+  const [screenDefinition, setScreenDefinition] = useState(50);
   const [currentColorMode, setCurrentColorMode] = useState([
     "color",
     "#000000",
