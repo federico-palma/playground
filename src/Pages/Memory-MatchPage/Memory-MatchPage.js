@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import MemoryCard from "./Components/MemoryCard";
+import StartGameModal from "./Components/StartGameModal";
 import classes from "./Memory-Match.module.css";
 
 const MemoryMatchPage = () => {
@@ -26,7 +27,7 @@ const MemoryMatchPage = () => {
     { id: "8b", symbol: 8, isTurned: false },
   ]);
 
-  //   const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
 
   const handleTurnCard = (index) => {
     let tempArray = cardArrayState;
@@ -37,6 +38,7 @@ const MemoryMatchPage = () => {
   return (
     <div className={classes.background}>
       <main className={classes["card-table"]}>
+          {!isPlaying && <StartGameModal />}
         {cardArrayState.map((elem, i) => {
           return (
             <MemoryCard
