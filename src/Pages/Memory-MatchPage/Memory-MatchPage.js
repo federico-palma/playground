@@ -6,24 +6,24 @@ const MemoryMatchPage = () => {
   useEffect(() => {
     document.title = "PlayGround | Memory-Match";
   }, []);
-  
+
   const [cardArrayState, setCardArrayState] = useState([
-    { symbol: 1, isTurned: false },
-    { symbol: 1, isTurned: false },
-    { symbol: 2, isTurned: false },
-    { symbol: 2, isTurned: false },
-    { symbol: 3, isTurned: false },
-    { symbol: 3, isTurned: false },
-    { symbol: 4, isTurned: false },
-    { symbol: 4, isTurned: false },
-    { symbol: 5, isTurned: false },
-    { symbol: 5, isTurned: false },
-    { symbol: 6, isTurned: false },
-    { symbol: 6, isTurned: false },
-    { symbol: 7, isTurned: false },
-    { symbol: 7, isTurned: false },
-    { symbol: 8, isTurned: false },
-    { symbol: 8, isTurned: false },
+    { id: "1a", symbol: 1, isTurned: false },
+    { id: "1b", symbol: 1, isTurned: false },
+    { id: "2a", symbol: 2, isTurned: false },
+    { id: "2b", symbol: 2, isTurned: false },
+    { id: "3a", symbol: 3, isTurned: false },
+    { id: "3b", symbol: 3, isTurned: false },
+    { id: "4a", symbol: 4, isTurned: false },
+    { id: "4b", symbol: 4, isTurned: false },
+    { id: "5a", symbol: 5, isTurned: false },
+    { id: "5b", symbol: 5, isTurned: false },
+    { id: "6a", symbol: 6, isTurned: false },
+    { id: "6b", symbol: 6, isTurned: false },
+    { id: "7a", symbol: 7, isTurned: false },
+    { id: "7b", symbol: 7, isTurned: false },
+    { id: "8a", symbol: 8, isTurned: false },
+    { id: "8b", symbol: 8, isTurned: false },
   ]);
 
   //   const [isPlaying, setIsPlaying] = useState(false);
@@ -42,7 +42,7 @@ const MemoryMatchPage = () => {
             <MemoryCard
               symbol={elem.symbol}
               isTurned={elem.isTurned}
-              key={i}
+              key={elem.id}
               index={i}
               handleTurnCard={handleTurnCard}
             />
