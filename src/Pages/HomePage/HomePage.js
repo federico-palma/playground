@@ -16,7 +16,7 @@ const HomePage = () => {
           <Card title="Etch-a-Sketch" imagePath="" />
         </Link>
         <Link to="/Memory-Match">
-          <Card title="Memory Match" imagePath="" />
+          <Card title="Memory-Match" imagePath="" />
         </Link>
 
         <Card title="Tic-Tac-Toe" imagePath="" />
