@@ -6,7 +6,9 @@
 }
 
 .card-list {
-  padding-top: 100px;
+  padding-top: 70px;
+  margin: auto;
+  max-width: 860px;
   display: flex;
   flex-direction: row;
   align-items: center;
