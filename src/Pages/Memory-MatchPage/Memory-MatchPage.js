@@ -48,9 +48,14 @@ const MemoryMatchPage = () => {
             }
           });
         });
+        setChoiceOne(null);
+        setChoiceTwo(null);
+      } else {
+        setTimeout(() => {
+          setChoiceOne(null);
+          setChoiceTwo(null);
+        }, 1500);
       }
-      setChoiceOne(null);
-      setChoiceTwo(null);
     }
   }, [choiceOne, choiceTwo]);
 
@@ -77,9 +82,7 @@ const MemoryMatchPage = () => {
   return (
     <div className={classes.background}>
       <main className={classes["card-table"]}>
-        {!isPlaying && (
-          <StartGameModal handleIsPlaying={handleIsPlaying} />
-        )}
+        {!isPlaying && <StartGameModal handleIsPlaying={handleIsPlaying} />}
         {cardArrayState.map((card) => {
           return (
             <MemoryCard
