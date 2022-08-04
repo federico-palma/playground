@@ -30,9 +30,15 @@ const MemoryMatchPage = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disableCards, setDisableCards] = useState(false)
+
+  const handleIsPlaying = () => {
+    setIsPlaying(true);
+    startGame();
+  };
 
   const handleTurnCard = (card) => {
-    if (!card.isMatched) {
+    if (!card.isMatched && !disableCards) {
       card.isTurned = true;
       choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
     }
@@ -40,6 +46,7 @@ const MemoryMatchPage = () => {
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
+      setDisableCards(true)
       if (choiceOne.symbol === choiceTwo.symbol) {
         setCardArrayState((preVal) => {
           return preVal.map((card) => {
@@ -50,21 +57,12 @@ const MemoryMatchPage = () => {
             }
           });
         });
-        setChoiceOne(null);
-        setChoiceTwo(null);
+        resetTurn()
       } else {
-        setTimeout(() => {
-          setChoiceOne(null);
-          setChoiceTwo(null);
-        }, 1500);
+        setTimeout(() => resetTurn(), 1500);
       }
     }
   }, [choiceOne, choiceTwo]);
-
-  const handleIsPlaying = () => {
-    setIsPlaying(true);
-    startGame();
-  };
 
   const turnAllCards = () => {
     setCardArrayState((preVal) =>
@@ -80,6 +78,12 @@ const MemoryMatchPage = () => {
         return 0.5 - Math.random();
       });
     });
+  };
+  
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setDisableCards(false)
   };
 
   const startGame = () => {
