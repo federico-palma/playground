@@ -41,7 +41,7 @@ const MemoryMatchPage = () => {
   const handleTurnCard = (card) => {
     if (!card.isMatched && !disableCards) {
       card.isTurned = true;
-      choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+      choiceOne && card !== choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
     }
   };
 
