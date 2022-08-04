@@ -74,9 +74,17 @@ const MemoryMatchPage = () => {
     );
   };
 
+  const shuffleCards = () => {
+    setCardArrayState((preVal) => {
+      return preVal.sort((a, b) => {
+        return 0.5 - Math.random();
+      });
+    });
+  };
+
   const startGame = () => {
     turnAllCards();
-    // shuffleCards();
+    shuffleCards();
   };
 
   return (
