@@ -31,6 +31,7 @@ const MemoryMatchPage = () => {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disableCards, setDisableCards] = useState(false)
+  const [turnNum, setTurnNum] = useState(0)
 
   const handleIsPlaying = () => {
     setIsPlaying(true);
@@ -84,17 +85,20 @@ const MemoryMatchPage = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
     setDisableCards(false)
+    setTurnNum(preVal => preVal + 1)
   };
 
   const startGame = () => {
+    setTurnNum(0)
     turnAllCards();
     shuffleCards();
   };
 
   return (
     <div className={classes.background}>
-      <main className={classes["card-table"]}>
         {!isPlaying && <StartGameModal handleIsPlaying={handleIsPlaying} />}
+        <h2 className={classes["turn-counter"]}>Turn number: {turnNum}</h2>
+      <main className={classes["card-table"]}>
         {cardArrayState.map((card) => {
           return (
             <MemoryCard
