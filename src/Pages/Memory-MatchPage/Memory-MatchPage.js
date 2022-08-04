@@ -67,13 +67,11 @@ const MemoryMatchPage = () => {
   };
 
   const turnAllCards = () => {
-    let tempArray = cardArrayState;
-    for (let i = 0; i < cardArrayState.length; i++) {
-      tempArray[i].isTurned = true;
-    }
-
-    setCardArrayState([...tempArray]);
-    // setCardArrayState(preVal => preVal.map(card => card.isTurned = true));
+    setCardArrayState((preVal) =>
+      preVal.map((card) => {
+        return { ...card, isTurned: true };
+      })
+    );
   };
 
   const startGame = () => {
@@ -94,7 +92,8 @@ const MemoryMatchPage = () => {
               showCard={
                 card === choiceOne ||
                 card === choiceTwo ||
-                card.isMatched === true
+                card.isMatched === true ||
+                card.isTurned === false
               }
             />
           );
