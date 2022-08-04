@@ -81,6 +81,13 @@
   justify-content: center;
 }
 
+.memory-card h1 {
+  font-size: 40px;
+  margin: 0px;
+  margin-top: 20%;
+  padding: 0px;
+}
+
 .turned {
   background-color: #e2a713;
   border: 4px solid white;
