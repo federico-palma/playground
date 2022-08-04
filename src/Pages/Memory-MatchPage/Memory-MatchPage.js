@@ -32,8 +32,10 @@ const MemoryMatchPage = () => {
   const [choiceTwo, setChoiceTwo] = useState(null);
 
   const handleTurnCard = (card) => {
-    card.isTurned = true;
-    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+    if (!card.isMatched) {
+      card.isTurned = true;
+      choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+    }
   };
 
   useEffect(() => {
