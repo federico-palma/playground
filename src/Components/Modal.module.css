@@ -39,6 +39,7 @@
   text-align: center;
   color: white;
   padding: 10px;
+  white-space: pre-line;
 }
 
 @media screen and (max-width: 500px) {

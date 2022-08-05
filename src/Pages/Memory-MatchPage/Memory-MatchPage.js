@@ -35,7 +35,8 @@ const MemoryMatchPage = () => {
   const [gameWon, setGameWon] = useState(false)
 
   const gameDesc = "Find the paired cards in the least number of turns possible."
-  const winDesc = `Congratulations! You found all the pairs in ${turnNum} turns.`
+  const winDesc = `Congratulations!
+                  You found all the pairs in ${turnNum} turns.`
 
   const handleTurnCard = (card) => {
     if (!card.isMatched && !disableCards) {
