@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import Modal from "../../Components/Modal";
 import MemoryCard from "./Components/MemoryCard";
-import StartGameModal from "./Components/StartGameModal";
 import classes from "./Memory-Match.module.css";
 
 const MemoryMatchPage = () => {
@@ -32,11 +32,10 @@ const MemoryMatchPage = () => {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disableCards, setDisableCards] = useState(false);
   const [turnNum, setTurnNum] = useState(0);
+  const [gameWon, setGameWon] = useState(false)
 
-  const handleIsPlaying = () => {
-    setIsPlaying(true);
-    startGame();
-  };
+  const gameDesc = "Find the paired cards in the least number of turns possible."
+  const winDesc = `Congratulations! You found all the pairs in ${turnNum} turns.`
 
   const handleTurnCard = (card) => {
     if (!card.isMatched && !disableCards) {
@@ -44,6 +43,14 @@ const MemoryMatchPage = () => {
       choiceOne && card !== choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
     }
   };
+
+  useEffect(() => {
+    let gameIsWon = !cardArrayState.some(elem => elem.isMatched === false)
+    if (gameIsWon) {
+      setIsPlaying(false)
+      setGameWon(true)
+    }
+  }, [cardArrayState])
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
@@ -59,6 +66,7 @@ const MemoryMatchPage = () => {
           });
         });
         resetTurn();
+        // checkGameIsWon();
       } else {
         setTimeout(() => resetTurn(), 1500);
       }
@@ -68,7 +76,7 @@ const MemoryMatchPage = () => {
   const turnAllCards = () => {
     setCardArrayState((preVal) =>
       preVal.map((card) => {
-        return { ...card, isTurned: true };
+        return { ...card, isTurned: true, isMatched: false };
       })
     );
   };
@@ -89,6 +97,8 @@ const MemoryMatchPage = () => {
   };
 
   const startGame = () => {
+    setIsPlaying(true);
+    setGameWon(false)
     setTurnNum(0);
     turnAllCards();
     shuffleCards();
@@ -96,7 +106,9 @@ const MemoryMatchPage = () => {
 
   return (
     <div className={classes.background}>
-      {!isPlaying && <StartGameModal handleIsPlaying={handleIsPlaying} />}
+      {!isPlaying && (
+        <Modal btnActive={true} handleStartGame={startGame} modalText={gameWon ? winDesc : gameDesc}></Modal>
+      )}
       <h2 className={classes["turn-counter"]}>Turn number: {turnNum}</h2>
       <main className={classes["card-table"]}>
         {cardArrayState.map((card) => {
