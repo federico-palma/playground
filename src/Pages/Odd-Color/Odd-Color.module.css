@@ -1,0 +1,11 @@
+.background {
+  background-color: #dadada;
+  margin: 0px;
+  margin-top: 75px;
+  height: calc(100vh - 75px);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
