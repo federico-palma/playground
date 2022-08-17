@@ -5,20 +5,20 @@ const Header = () => {
   const { pathname } = useLocation();
 
   const setStyleFromPath = () => {
-      switch (pathname) {
-          case '/':
-              return classes.homepage
-          case '/Etch-a-Sketch':
-              return classes.eas
-          case '/Memory-Match':
-              return classes["memory-match"]
-          case '/Odd-Color':
-              return classes["odd-color"]
-      
-          default:
-              break;
-      }
-  }
+    switch (pathname) {
+      case "/":
+        return classes.homepage;
+      case "/Etch-a-Sketch":
+        return classes.eas;
+      case "/Memory-Match":
+        return classes["memory-match"];
+      case "/Odd-Color":
+        return classes["odd-color"];
+
+      default:
+        break;
+    }
+  };
 
   return (
     <header className={`${classes.header} ${setStyleFromPath()}`}>
