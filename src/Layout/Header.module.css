@@ -10,21 +10,21 @@
 }
 
 .title {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .homepage {
-    background-color: #264653;
+  background-color: #264653;
 }
 
 .eas {
-    background-color: #cc4c2c;
+  background-color: #cc4c2c;
 }
 
 .memory-match {
-    background-color: #e2a713;
+  background-color: #e2a713;
 }
 
 .odd-color {
-    background-color: #868686;
+  background-color: #868686;
 }
