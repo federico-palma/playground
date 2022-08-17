@@ -12,6 +12,8 @@ const Header = () => {
               return classes.eas
           case '/Memory-Match':
               return classes["memory-match"]
+          case '/Odd-Color':
+              return classes["odd-color"]
       
           default:
               break;
