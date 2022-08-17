@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Clock from "./Components/Clock";
+import ColorBall from "./Components/Color-Ball";
 import classes from "./Odd-Color.module.css";
 
 const OddColorPage = () => {
@@ -31,10 +32,17 @@ const OddColorPage = () => {
             isPlaying={isPlaying}
             handleTimer={handleTimer}
           ></Clock>
-        </div>
-        <div className={classes["color-balls"]}>
           <button onClick={handleStartGame}>Start/Stop timer</button>
           <button onClick={handleResetTimer}>Reset timer</button>
+        </div>
+        <div className={classes["color-balls-container"]}>
+          {[...Array(9)].map((elem, index) => {
+            if (index === 4) {
+              return <ColorBall key={index} correctBall={true}></ColorBall>
+            } else {
+              return <ColorBall key={index} correctBall={false}></ColorBall>
+            }
+          })}
         </div>
       </main>
     </div>
