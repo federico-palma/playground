@@ -5,7 +5,7 @@ import classes from "./Memory-Match.module.css";
 
 const MemoryMatchPage = () => {
   useEffect(() => {
-    document.title = "PlayGround | Memory-Match";
+    document.title = "PlayGround | Memory Match";
   }, []);
 
   const [cardArrayState, setCardArrayState] = useState([
