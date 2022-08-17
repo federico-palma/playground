@@ -10,29 +10,27 @@ const OddColorPage = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [countdown, setCountdown] = useState(10);
 
-  useEffect(() => {
-    let countdownTimeout;
-    if (isPlaying && countdown > 0) {
-      countdownTimeout = setTimeout(() => {
-        setCountdown((prevState) => prevState - 1);
-      }, 1100);
-    }
-    return () => clearTimeout(countdownTimeout);
-  }, [countdown, isPlaying]);
+  const handleTimer = () => {
+    setCountdown((prevState) => prevState - 1);
+  };
 
   const handleStartGame = () => {
-    setIsPlaying(prevState => !prevState);
+    setIsPlaying((prevState) => !prevState);
   };
 
   const handleResetTimer = () => {
-    setCountdown(10)
-  }
+    setCountdown(10);
+  };
 
   return (
     <div className={classes.background}>
       <main className={classes["main-container"]}>
         <div>
-          <Clock countdown={countdown}></Clock>
+          <Clock
+            countdown={countdown}
+            isPlaying={isPlaying}
+            handleTimer={handleTimer}
+          ></Clock>
         </div>
         <div className={classes["color-balls"]}>
           <button onClick={handleStartGame}>Start/Stop timer</button>
