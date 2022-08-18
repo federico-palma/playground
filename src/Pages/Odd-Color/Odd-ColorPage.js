@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Modal from "../../Components/Modal";
 import Clock from "./Components/Clock";
 import ColorBall from "./Components/Color-Ball";
 import classes from "./Odd-Color.module.css";
@@ -9,6 +10,7 @@ const OddColorPage = () => {
   }, []);
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const [gameLost, setGameLost] = useState(false);
   const [timer, setTimer] = useState(5);
   const [turnNum, setTurnNum] = useState(1);
   // const [difficulty, setdifficulty] = useState(1);
@@ -17,9 +19,9 @@ const OddColorPage = () => {
   const [rightColor, setRightColor] = useState(null);
 
   const gameDesc =
-    "Find the paired cards in the least number of turns possible.";
-  const winDesc = `Congratulations!
-                  You found all the pairs in ${turnNum} turns.`;
+    "You have 3 seconds to find the odd colored ball";
+  const endDesc = `Wrong ball!
+                  You found the odd colored ball ${turnNum} times!`;
 
   // Func updates the ball colors state with a "wrong" color, and "correct" color.
   const setBallColors = () => {
@@ -41,6 +43,10 @@ const OddColorPage = () => {
     setRightColor(correctColor);
   };
 
+  const handleTimer = () => {
+    setTimer((prevState) => prevState - 1);
+  };
+
   const handleCorrectChoice = () => {
     setBallColors();
     setTimer(5);
@@ -50,13 +56,12 @@ const OddColorPage = () => {
 
   const handleWrongChoice = () => {
     setIsPlaying(false);
-  };
-
-  const handleTimer = () => {
-    setTimer((prevState) => prevState - 1);
+    setGameLost(true);
   };
 
   const handleStartGame = () => {
+    setGameLost(false);
+    setTurnNum(0)
     setBallColors();
     setIsPlaying((prevState) => !prevState);
     setCorrectBallIndex(Math.floor(Math.random() * (8 - 0 + 1)) + 0);
@@ -72,8 +77,8 @@ const OddColorPage = () => {
         {!isPlaying && (
           <Modal
             btnActive={true}
-            handleStartGame={startGame}
-            modalText={gameWon ? winDesc : gameDesc}
+            handleStartGame={handleStartGame}
+            modalText={gameLost ? endDesc : gameDesc}
           ></Modal>
         )}
         <div>
@@ -82,9 +87,6 @@ const OddColorPage = () => {
             isPlaying={isPlaying}
             handleTimer={handleTimer}
           ></Clock>
-          <div>turn: {turnNum}</div>
-          <button onClick={handleStartGame}>Start/Stop timer</button>
-          <button onClick={handleResetTimer}>Reset timer</button>
         </div>
         <div className={classes["color-balls-container"]}>
           {[...Array(9)].map((elem, index) => {
