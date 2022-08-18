@@ -11,17 +11,19 @@ const OddColorPage = () => {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [gameLost, setGameLost] = useState(false);
-  const [timer, setTimer] = useState(5);
+  const [endTextTitle, setEndTextTitle] = useState("");
+  const [timer, setTimer] = useState(3);
   const [turnNum, setTurnNum] = useState(1);
   // const [difficulty, setdifficulty] = useState(1);
   const [correctBallIndex, setCorrectBallIndex] = useState();
   const [wrongColor, setWrongColor] = useState(null);
   const [rightColor, setRightColor] = useState(null);
 
-  const gameDesc =
-    "You have 3 seconds to find the odd colored ball";
-  const endDesc = `Wrong ball!
-                  You found the odd colored ball ${turnNum} times!`;
+  const gameDesc = "You have 3 seconds to find the odd colored ball";
+  const endDesc = `${endTextTitle}!
+                  You found the odd colored ball ${turnNum} time${
+    turnNum === 1 ? "" : "s"
+  }!`;
 
   // Func updates the ball colors state with a "wrong" color, and "correct" color.
   const setBallColors = () => {
@@ -49,26 +51,24 @@ const OddColorPage = () => {
 
   const handleCorrectChoice = () => {
     setBallColors();
-    setTimer(5);
+    setTimer(3);
     setTurnNum((prevState) => prevState + 1);
     setCorrectBallIndex(Math.floor(Math.random() * (8 - 0 + 1)) + 0);
   };
 
-  const handleWrongChoice = () => {
-    setIsPlaying(false);
+  const handleEndGame = (endText) => {
+    setEndTextTitle(endText);
     setGameLost(true);
+    setIsPlaying(false);
   };
 
   const handleStartGame = () => {
     setGameLost(false);
-    setTurnNum(0)
+    setTurnNum(0);
+    setTimer(3);
     setBallColors();
-    setIsPlaying((prevState) => !prevState);
+    setIsPlaying(true);
     setCorrectBallIndex(Math.floor(Math.random() * (8 - 0 + 1)) + 0);
-  };
-
-  const handleResetTimer = () => {
-    setTimer(5);
   };
 
   return (
@@ -86,6 +86,7 @@ const OddColorPage = () => {
             timer={timer}
             isPlaying={isPlaying}
             handleTimer={handleTimer}
+            handleEndGame={handleEndGame}
           ></Clock>
         </div>
         <div className={classes["color-balls-container"]}>
@@ -103,7 +104,9 @@ const OddColorPage = () => {
                 <ColorBall
                   key={index}
                   ballColor={wrongColor}
-                  handleChoice={handleWrongChoice}
+                  handleChoice={() => {
+                    handleEndGame("Wrong Ball");
+                  }}
                 ></ColorBall>
               );
             }
