@@ -14,16 +14,15 @@ const OddColorPage = () => {
   const [endTextTitle, setEndTextTitle] = useState("");
   const [timer, setTimer] = useState(3);
   const [turnNum, setTurnNum] = useState(1);
-  // const [difficulty, setdifficulty] = useState(1);
+  const [difficulty, setdifficulty] = useState(0);
   const [correctBallIndex, setCorrectBallIndex] = useState();
   const [wrongColor, setWrongColor] = useState(null);
   const [rightColor, setRightColor] = useState(null);
 
-  const gameDesc = "You have 3 seconds to find the odd colored ball";
+  const gameDesc = `You have 3 seconds to find the odd colored ball.
+                    The game will get increasingly difficult`;
   const endDesc = `${endTextTitle}!
-                  You found the odd colored ball ${turnNum} time${
-    turnNum === 1 ? "" : "s"
-  }!`;
+                  You found the odd colored ball ${turnNum} time${turnNum === 1 ? "" : "s"}!`;
 
   // Func updates the ball colors state with a "wrong" color, and "correct" color.
   const setBallColors = () => {
@@ -31,14 +30,14 @@ const OddColorPage = () => {
     let wrongColor = "#";
     for (let i = 0; i < 6; i++) {
       if (i === 4) {
-        wrongColor += "9";
+        wrongColor += "A";
       } else {
         wrongColor += letters[Math.floor(Math.random() * 16)];
       }
     }
     let correctColor =
       wrongColor.slice(0, wrongColor.length - 2) +
-      "8" +
+      difficulty +
       wrongColor.slice(wrongColor.length - 1);
 
     setWrongColor(wrongColor);
@@ -50,6 +49,9 @@ const OddColorPage = () => {
   };
 
   const handleCorrectChoice = () => {
+    if (difficulty < 9) {
+      setdifficulty((prevState) => prevState + 1);
+    }
     setBallColors();
     setTimer(3);
     setTurnNum((prevState) => prevState + 1);
@@ -66,6 +68,7 @@ const OddColorPage = () => {
     setGameLost(false);
     setTurnNum(0);
     setTimer(3);
+    setdifficulty(0);
     setBallColors();
     setIsPlaying(true);
     setCorrectBallIndex(Math.floor(Math.random() * (8 - 0 + 1)) + 0);
