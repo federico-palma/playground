@@ -10,7 +10,7 @@ const OddColorPage = () => {
   }, []);
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const [gameLost, setGameLost] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [endTextTitle, setEndTextTitle] = useState("");
   const [timer, setTimer] = useState(3);
   const [turnNum, setTurnNum] = useState(1);
@@ -60,13 +60,13 @@ const OddColorPage = () => {
 
   const handleEndGame = (endText) => {
     setEndTextTitle(endText);
-    setGameLost(true);
+    setGameOver(true);
     setIsPlaying(false);
+    setdifficulty(0);
   };
 
   const handleStartGame = () => {
-    setdifficulty(0);
-    setGameLost(false);
+    setGameOver(false);
     setTurnNum(0);
     setTimer(3);
     setBallColors();
@@ -81,7 +81,7 @@ const OddColorPage = () => {
           <Modal
             btnActive={true}
             handleStartGame={handleStartGame}
-            modalText={gameLost ? endDesc : gameDesc}
+            modalText={gameOver ? endDesc : gameDesc}
             backColor="#2ba198"
           ></Modal>
         )}
