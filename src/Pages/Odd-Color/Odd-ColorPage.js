@@ -20,7 +20,7 @@ const OddColorPage = () => {
   const [rightColor, setRightColor] = useState(null);
 
   const gameDesc = `You have 3 seconds to find the odd colored ball.
-                    The game will get increasingly difficult`;
+                    The game will get increasingly difficult.`;
   const endDesc = `${endTextTitle}!
                   You found the odd colored ball ${turnNum} time${turnNum === 1 ? "" : "s"}!`;
 
@@ -65,10 +65,10 @@ const OddColorPage = () => {
   };
 
   const handleStartGame = () => {
+    setdifficulty(0);
     setGameLost(false);
     setTurnNum(0);
     setTimer(3);
-    setdifficulty(0);
     setBallColors();
     setIsPlaying(true);
     setCorrectBallIndex(Math.floor(Math.random() * (8 - 0 + 1)) + 0);
