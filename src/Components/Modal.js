@@ -2,7 +2,7 @@ import classes from "./Modal.module.css";
 
 const Modal = (props) => {
   return (
-    <div className={classes.modal}>
+    <div className={classes.modal} style={{ backgroundColor: props.backColor }}>
       {props.modalText && (
         <h3 className={classes["game-text"]}>{props.modalText}</h3>
       )}

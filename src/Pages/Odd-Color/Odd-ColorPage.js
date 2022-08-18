@@ -82,6 +82,7 @@ const OddColorPage = () => {
             btnActive={true}
             handleStartGame={handleStartGame}
             modalText={gameLost ? endDesc : gameDesc}
+            backColor="#868686"
           ></Modal>
         )}
         <div>

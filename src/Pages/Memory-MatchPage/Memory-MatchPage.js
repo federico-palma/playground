@@ -113,6 +113,7 @@ const MemoryMatchPage = () => {
           btnActive={true}
           handleStartGame={startGame}
           modalText={gameWon ? winDesc : gameDesc}
+          backColor="#e2a713"
         ></Modal>
       )}
       <h2 className={classes["turn-counter"]}>Turn number: {turnNum}</h2>
