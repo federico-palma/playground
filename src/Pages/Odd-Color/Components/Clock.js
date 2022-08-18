@@ -6,15 +6,15 @@ const Clock = (props) => {
 
   useEffect(() => {
     let countdownTimeout;
-    if (props.isPlaying && props.countdown > 0) {
+    if (props.isPlaying && props.timer > 0) {
       countdownTimeout = setTimeout(() => {
         handleTimer();
       }, 1000);
     }
     return () => clearTimeout(countdownTimeout);
-  }, [props.countdown, props.isPlaying, handleTimer]);
+  }, [props.timer, props.isPlaying, handleTimer]);
 
-  return <div className={classes.clock}>{props.countdown}</div>;
+  return <div className={classes.clock}>{props.timer}</div>;
 };
 
 export default Clock;
