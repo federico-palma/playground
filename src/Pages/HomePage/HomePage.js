@@ -32,13 +32,6 @@ const HomePage = () => {
             imagePath=""
           />
         </Link>
-        <Link>
-          <Card
-            className={classes["homepage-card"]}
-            title="Tic-Tac-Toe"
-            imagePath=""
-          />
-        </Link>
         <Link to="/Simon-Says">
           <Card
             className={classes["homepage-card"]}
@@ -46,7 +39,14 @@ const HomePage = () => {
             imagePath=""
           />
         </Link>
-        <Link>
+        <Link to="/">
+          <Card
+            className={classes["homepage-card"]}
+            title="Tic-Tac-Toe"
+            imagePath=""
+          />
+        </Link>
+        <Link to="/">
           <Card
             className={classes["homepage-card"]}
             title="Rock Paper Scissors"
