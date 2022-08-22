@@ -5,7 +5,7 @@ import classes from "./Memory-Match.module.css";
 
 const MemoryMatchPage = () => {
   useEffect(() => {
-    document.title = "PlayGround | Memory-Match";
+    document.title = "PlayGround | Memory Match";
   }, []);
 
   const [cardArrayState, setCardArrayState] = useState([
@@ -32,11 +32,12 @@ const MemoryMatchPage = () => {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disableCards, setDisableCards] = useState(false);
   const [turnNum, setTurnNum] = useState(0);
-  const [gameWon, setGameWon] = useState(false)
+  const [gameWon, setGameWon] = useState(false);
 
-  const gameDesc = "Find the paired cards in the least number of turns possible."
+  const gameDesc =
+    "Find the paired cards in the least number of turns possible.";
   const winDesc = `Congratulations!
-                  You found all the pairs in ${turnNum} turns.`
+                  You found all the pairs in ${turnNum} turns.`;
 
   const handleTurnCard = (card) => {
     if (!card.isMatched && !disableCards) {
@@ -46,12 +47,12 @@ const MemoryMatchPage = () => {
   };
 
   useEffect(() => {
-    let gameIsWon = !cardArrayState.some(elem => elem.isMatched === false)
+    let gameIsWon = !cardArrayState.some((elem) => elem.isMatched === false);
     if (gameIsWon) {
-      setIsPlaying(false)
-      setGameWon(true)
+      setIsPlaying(false);
+      setGameWon(true);
     }
-  }, [cardArrayState])
+  }, [cardArrayState]);
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
@@ -99,7 +100,7 @@ const MemoryMatchPage = () => {
 
   const startGame = () => {
     setIsPlaying(true);
-    setGameWon(false)
+    setGameWon(false);
     setTurnNum(0);
     turnAllCards();
     shuffleCards();
@@ -108,7 +109,12 @@ const MemoryMatchPage = () => {
   return (
     <div className={classes.background}>
       {!isPlaying && (
-        <Modal btnActive={true} handleStartGame={startGame} modalText={gameWon ? winDesc : gameDesc}></Modal>
+        <Modal
+          btnActive={true}
+          handleStartGame={startGame}
+          modalText={gameWon ? winDesc : gameDesc}
+          backColor="#e2a713"
+        ></Modal>
       )}
       <h2 className={classes["turn-counter"]}>Turn number: {turnNum}</h2>
       <main className={classes["card-table"]}>

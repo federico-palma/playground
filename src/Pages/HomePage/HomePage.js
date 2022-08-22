@@ -1,13 +1,12 @@
 import Card from "../../Components/Card";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
-import { useEffect } from "react"
-
+import { useEffect } from "react";
 
 const HomePage = () => {
   useEffect(() => {
-    document.title = "PlayGround"
-  }, [])
+    document.title = "PlayGround";
+  }, []);
 
   return (
     <div className="homepage-container">
@@ -18,11 +17,13 @@ const HomePage = () => {
         <Link to="/Memory-Match">
           <Card title="Memory Match" imagePath="" />
         </Link>
+        <Link to="/Odd-Color">
+          <Card title="Odd Color" imagePath="" />
+        </Link>
 
         <Card title="Tic-Tac-Toe" imagePath="" />
         <Card title="Rock Paper Scissors" imagePath="" />
         <Card title="Simon Says" imagePath="" />
-        <Card title="Color Standout" imagePath="" />
       </div>
     </div>
   );
