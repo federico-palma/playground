@@ -1,0 +1,59 @@
+.background {
+  background-color: #81d583;
+  margin: 0px;
+  margin-top: 75px;
+  min-height: calc(100vh - 75px);
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.board {
+  background-color: rgb(61, 61, 61);
+  width: 70%;
+  max-width: 500px;
+  /* height: 500px; */
+  aspect-ratio: 1;
+  margin: 20px;
+  margin-top: 80px;
+  padding: 3%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 5%;
+  border-radius: 50%;
+}
+
+.btn {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.btn:active {
+  filter: contrast(400%);
+}
+
+.btn-1 {
+  background-color: rgb(1, 164, 1);
+  border-radius: 100% 0px 0px 0px;
+}
+.btn-2 {
+  background-color: rgb(176, 0, 0);
+  border-radius: 0px 100% 0px 0px;
+}
+.btn-3 {
+  background-color: rgb(179, 179, 2);
+  border-radius: 0px 0px 0px 100%;
+}
+.btn-4 {
+  background-color: rgb(1, 1, 165);
+  border-radius: 0px 0px 100% 0px;
+}
+
+.active {
+  filter: contrast(400%);
+}
