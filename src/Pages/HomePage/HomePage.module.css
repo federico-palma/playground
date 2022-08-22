@@ -30,11 +30,8 @@
 }
 
 @media screen and (max-width: 635px) {
-  * {
-    font-size: 18px;
-  }
-
   .card-list > a {
+    font-size: 18px;
     width: 150px;
     height: 150px;
   }
