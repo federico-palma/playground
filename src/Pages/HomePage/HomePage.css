@@ -1,7 +1,8 @@
 .homepage-container {
   margin: 0px;
   margin-top: 75px;
-  height: calc(100vh - 75px);
+  min-height: calc(100vh - 75px);
+  height: 100%;
   background-color: rgb(69, 113, 149);
 }
 
@@ -14,4 +15,38 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.card-list > a {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+@media screen and (max-width: 730px) {
+  .card-list > a {
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  * {
+    font-size: 18px;
+  }
+
+  .card-list > a {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card-list {
+    padding-top: 40px;
+    flex-direction: column;
+  }
+  .card-list > a {
+    width: 250px;
+    height: auto;
+  }
 }

@@ -12,18 +12,27 @@ const HomePage = () => {
     <div className="homepage-container">
       <div className="card-list">
         <Link to="/Etch-a-Sketch">
-          <Card title="Etch-a-Sketch" imagePath="" />
+          <Card className="homepage-card" title="Etch-a-Sketch" imagePath="" />
         </Link>
         <Link to="/Memory-Match">
-          <Card title="Memory Match" imagePath="" />
+          <Card className="homepage-card" title="Memory Match" imagePath="" />
         </Link>
         <Link to="/Odd-Color">
-          <Card title="Odd Color" imagePath="" />
+          <Card className="homepage-card" title="Odd Color" imagePath="" />
         </Link>
-
-        <Card title="Tic-Tac-Toe" imagePath="" />
-        <Card title="Rock Paper Scissors" imagePath="" />
-        <Card title="Simon Says" imagePath="" />
+        <Link>
+          <Card className="homepage-card" title="Tic-Tac-Toe" imagePath="" />
+        </Link>
+        <Link>
+          <Card
+            className="homepage-card"
+            title="Rock Paper Scissors"
+            imagePath=""
+          />
+        </Link>
+        <Link>
+          <Card className="homepage-card" title="Simon Says" imagePath="" />
+        </Link>
       </div>
     </div>
   );
