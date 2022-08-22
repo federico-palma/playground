@@ -14,6 +14,8 @@ const Header = () => {
         return classes["memory-match"];
       case "/Odd-Color":
         return classes["odd-color"];
+      case "/Simon-Says":
+        return classes["simon-says"];
 
       default:
         break;
