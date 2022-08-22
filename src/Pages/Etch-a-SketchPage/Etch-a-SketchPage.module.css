@@ -232,9 +232,36 @@ input[type="color"]::-webkit-color-swatch {
   }
 }
 @media screen and (max-width: 650px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .color-settings {
+    flex-direction: row;
+    justify-content: center;
+    width: fit-content;
+  }
+
+  .colorPicker {
+    /* width: 60px;
+    height: 60px; */
+    padding: 1px;
+  }
+  input[type="color"]::-webkit-color-swatch {
+    width: 50px;
+    height: 50px;
+    align-self: center;
+    border-radius: 50%;
+  }
+
   .screen {
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
+  }
+
+  .grid-settings {
+    flex-direction: row;
+    width: 50%;
   }
   .btn-mode {
     font-size: 0.8rem;
@@ -246,13 +273,17 @@ input[type="color"]::-webkit-color-swatch {
     font-size: 0.8rem;
   }
 }
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 400px) {
+  .main {
+    padding: 5px;
+  }
   .screen {
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: 260px;
   }
   .btn-mode {
     font-size: 0.7rem;
+    margin: 2px;
   }
   .slider-div {
     font-size: 0.7rem;
