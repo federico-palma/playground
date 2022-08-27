@@ -28,7 +28,7 @@ const SimonSaysPage = () => {
   }, []);
 
   const getRandomNum = () => {
-    return Math.floor(Math.random() * 3);
+    return Math.floor(Math.random() * 4);
   };
 
   const newRound = useCallback(() => {
@@ -61,7 +61,7 @@ const SimonSaysPage = () => {
         clearFilter();
       }, 500);
       index = index + 1;
-    }, 1500);
+    }, 1000);
   }, [btnsRefs, sequenceArray]);
 
   useEffect(() => {
