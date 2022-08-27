@@ -4,6 +4,12 @@ import Modal from "../../Components/Modal";
 import Hud from "./Components/Hud";
 import classes from "./SimonSays.module.css";
 
+import audio0 from "./Audio-files/SS-0.mp3";
+import audio1 from "./Audio-files/SS-1.mp3";
+import audio2 from "./Audio-files/SS-2.mp3";
+import audio3 from "./Audio-files/SS-3.mp3";
+const audioFiles = [audio0, audio1, audio2, audio3];
+
 const SimonSaysPage = () => {
   useEffect(() => {
     document.title = "PlayGround | Simon Says";
@@ -55,6 +61,9 @@ const SimonSaysPage = () => {
         clearInterval(sequenceInterval);
         return;
       }
+
+      let audioObj = new Audio(audioFiles[sequenceArray[index]]);
+      audioObj.play();
       btnsRefs[sequenceArray[index]].current.style.filter = "contrast(400%)";
 
       setTimeout(() => {
@@ -70,9 +79,11 @@ const SimonSaysPage = () => {
     }
   }, [sequenceArray, playSequence]);
 
-  // Check player choices with the sequence array.
+  // Check player choices with the sequence array, whenever playerChoiceArray changes.
   const addPlayerChoiceHandler = btnIndex => {
     if (isPlaying && playerTurn) {
+      let audioObj = new Audio(audioFiles[btnIndex]);
+      audioObj.play();
       setPlayerChoiceArray(prevState => [...prevState, btnIndex]);
     }
   };
