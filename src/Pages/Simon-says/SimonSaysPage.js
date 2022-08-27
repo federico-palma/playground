@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Board from "./Components/Board";
 import classes from "./SimonSays.module.css";
 
@@ -10,7 +9,7 @@ const SimonSaysPage = () => {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [btnsRefs, setBtnsRefs] = useState([]);
-  const [disableBtns, setDisableBtns] = useState(false);
+  const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [sequenceArray, setSequenceArray] = useState([]);
   const [playerChoiceArray, setPlayerChoiceArray] = useState([]);
   const [playerTurn, setPlayerTurn] = useState(false);
@@ -23,21 +22,23 @@ const SimonSaysPage = () => {
     return Math.floor(Math.random() * 3);
   };
 
-  // Sequence is payed with useEffect whenever the sequenceArray changes.
+  // Sequence is played with useEffect whenever the sequenceArray changes.
   const playSequence = useCallback(() => {
-    console.log("Starting seq");
     console.log(sequenceArray);
-    setDisableBtns(true);
+    setIsBtnDisabled(true);
     let index = 0;
     const clearFilter = () => {
       for (let i = 0; i < btnsRefs.length; i++) {
-        btnsRefs[i].current.style.filter = "contrast(100%)";
+        btnsRefs[i].current.removeAttribute("Style");
       }
     };
 
     const sequenceInterval = setInterval(() => {
       if (index === sequenceArray.length) {
+        console.log("finished sequence");
         clearFilter();
+        setIsBtnDisabled(false);
+        setPlayerTurn(true);
         clearInterval(sequenceInterval);
         return;
       }
@@ -56,6 +57,29 @@ const SimonSaysPage = () => {
     }
   }, [sequenceArray, playSequence]);
 
+  // Check player choices with the sequence array.
+  const addPlayerChoiceHandler = btnIndex => {
+    if (isPlaying && playerTurn) {
+      setPlayerChoiceArray(prevState => [...prevState, btnIndex]);
+    }
+  };
+
+  const checkMatchingArrays = useCallback(() => {
+    if (playerChoiceArray === sequenceArray.slice(0, playerChoiceArray.length - 1)) {
+      return true;
+    }
+    return false;
+  }, [playerChoiceArray, sequenceArray]);
+
+  useEffect(() => {
+    console.log("Player choices: " + playerChoiceArray);
+    if (playerChoiceArray.length > 0) {
+      if (checkMatchingArrays()) {
+        console.log("Matching Arrays!");
+      }
+    }
+  }, [playerChoiceArray, checkMatchingArrays]);
+
   const newRound = () => {
     console.log("New Round");
     setPlayerTurn(false);
@@ -65,12 +89,6 @@ const SimonSaysPage = () => {
       console.log("new number is: " + newNumber);
       return [...prevState, newNumber];
     });
-  };
-
-  const addPlayerChoiceHandler = btnIndex => {
-    if (isPlaying && playerTurn) {
-      setPlayerChoiceArray(prevState => [...prevState, btnIndex]);
-    }
   };
 
   const startGame = () => {
@@ -85,8 +103,7 @@ const SimonSaysPage = () => {
         <Board
           addPlayerChoiceHandler={addPlayerChoiceHandler}
           setRefsHandler={setRefsHandler}
-          isBtnDisable={disableBtns}
-          ></Board>
+          isBtnDisable={isBtnDisabled}></Board>
       </main>
     </div>
   );

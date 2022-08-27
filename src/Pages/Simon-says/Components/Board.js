@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import classes from "../SimonSays.module.css";
 
 const Board = ({ addPlayerChoiceHandler, setRefsHandler, isBtnDisable }) => {
@@ -10,8 +9,7 @@ const Board = ({ addPlayerChoiceHandler, setRefsHandler, isBtnDisable }) => {
 
   useEffect(() => {
     setRefsHandler(btn1Ref, btn2Ref, btn3Ref, btn4Ref);
-  }, [setRefsHandler, btn1Ref, btn2Ref, btn3Ref, btn4Ref])
-
+  }, [setRefsHandler, btn1Ref, btn2Ref, btn3Ref, btn4Ref]);
 
   return (
     <>
@@ -21,8 +19,7 @@ const Board = ({ addPlayerChoiceHandler, setRefsHandler, isBtnDisable }) => {
         onClick={() => {
           addPlayerChoiceHandler(0);
         }}
-        disabled={isBtnDisable}
-        ></button>
+        disabled={isBtnDisable}></button>
       <button
         className={`${classes.btn} ${classes["btn-2"]}`}
         ref={btn2Ref}
