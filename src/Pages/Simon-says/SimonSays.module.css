@@ -34,6 +34,10 @@
   cursor: pointer;
 }
 
+.btn:disabled{
+  cursor: not-allowed;
+}
+
 .btn:enabled:active {
   filter: contrast(400%);
 }
