@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import Board from "./Components/Board";
 import Modal from "../../Components/Modal";
+import Hud from "./Components/Hud";
 import classes from "./SimonSays.module.css";
 
 const SimonSaysPage = () => {
@@ -96,7 +97,7 @@ const SimonSaysPage = () => {
   }, [playerChoiceArray, sequenceArray, checkMatchingArrays, newRound]);
 
   const handleStartGame = () => {
-    setSequenceArray([])
+    setSequenceArray([]);
     setGameOver(false);
     setIsPlaying(true);
     newRound();
@@ -104,14 +105,15 @@ const SimonSaysPage = () => {
 
   return (
     <div className={classes.background}>
-      <main className={classes.board}>
-        {!isPlaying && (
-          <Modal
-            btnActive={true}
-            handleStartGame={handleStartGame}
-            modalText={gameOver ? endDesc : gameDesc}
-            backColor="#57a759"></Modal>
-        )}
+      {!isPlaying && (
+        <Modal
+          btnActive={true}
+          handleStartGame={handleStartGame}
+          modalText={gameOver ? endDesc : gameDesc}
+          backColor="#57a759"></Modal>
+      )}
+      <main className={classes.main}>
+        <Hud roundNumber={sequenceArray.length}></Hud>
         <Board
           addPlayerChoiceHandler={addPlayerChoiceHandler}
           setRefsHandler={setRefsHandler}

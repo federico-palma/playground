@@ -12,7 +12,7 @@ const Board = ({ addPlayerChoiceHandler, setRefsHandler, isBtnDisable }) => {
   }, [setRefsHandler, btn1Ref, btn2Ref, btn3Ref, btn4Ref]);
 
   return (
-    <>
+    <div className={classes.board}>
       <button
         className={`${classes.btn} ${classes["btn-1"]}`}
         ref={btn1Ref}
@@ -41,7 +41,7 @@ const Board = ({ addPlayerChoiceHandler, setRefsHandler, isBtnDisable }) => {
           addPlayerChoiceHandler(3);
         }}
         disabled={isBtnDisable}></button>
-    </>
+    </div>
   );
 };
 

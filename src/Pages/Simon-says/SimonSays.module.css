@@ -11,19 +11,34 @@
   align-items: center;
 }
 
+.main {
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.hud {
+  background-color: white;
+  border-radius: 10px;
+  width: 100px;
+  height: fit-content;
+}
+
 .board {
   background-color: rgb(61, 61, 61);
-  width: 70%;
-  max-width: 500px;
-  /* height: 500px; */
+  width: 100%;
+  max-width: 400px;
   aspect-ratio: 1;
-  margin: 20px;
-  margin-top: 80px;
-  padding: 3%;
+  margin-top: 10px;
+  padding: 4%;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  gap: 5%;
+  gap: 3%;
   border-radius: 50%;
 }
 
@@ -34,7 +49,7 @@
   cursor: pointer;
 }
 
-.btn:disabled{
+.btn:disabled {
   cursor: not-allowed;
 }
 
