@@ -84,7 +84,9 @@ const SimonSaysPage = () => {
       <main className={classes.board}>
         <Board
           addPlayerChoiceHandler={addPlayerChoiceHandler}
-          setRefsHandler={setRefsHandler}></Board>
+          setRefsHandler={setRefsHandler}
+          isBtnDisable={disableBtns}
+          ></Board>
       </main>
     </div>
   );
