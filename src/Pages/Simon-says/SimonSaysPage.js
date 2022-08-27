@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import Board from "./Components/Board";
+import Modal from "../../Components/Modal";
 import classes from "./SimonSays.module.css";
 
 const SimonSaysPage = () => {
@@ -8,11 +9,18 @@ const SimonSaysPage = () => {
   }, []);
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [btnsRefs, setBtnsRefs] = useState([]);
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [sequenceArray, setSequenceArray] = useState([]);
   const [playerChoiceArray, setPlayerChoiceArray] = useState([]);
   const [playerTurn, setPlayerTurn] = useState(false);
+
+  const gameDesc = `Follow the sequence and try to repeat it.`;
+  const endDesc = `Wrong Answer!
+                  You completed ${sequenceArray.length - 1} round${
+    sequenceArray.length !== 2 ? "s" : ""
+  }!`;
 
   const setRefsHandler = useCallback((a, b, c, d) => {
     setBtnsRefs([a, b, c, d]);
@@ -23,7 +31,6 @@ const SimonSaysPage = () => {
   };
 
   const newRound = useCallback(() => {
-    console.log("New Round");
     setPlayerTurn(false);
     setPlayerChoiceArray([]);
     setSequenceArray(prevState => [...prevState, getRandomNum()]);
@@ -31,7 +38,6 @@ const SimonSaysPage = () => {
 
   // Sequence is played with useEffect whenever the sequenceArray changes.
   const playSequence = useCallback(() => {
-    console.log(sequenceArray);
     setIsBtnDisabled(true);
     let index = 0;
     const clearFilter = () => {
@@ -42,7 +48,6 @@ const SimonSaysPage = () => {
 
     const sequenceInterval = setInterval(() => {
       if (index === sequenceArray.length) {
-        console.log("finished sequence");
         clearFilter();
         setIsBtnDisabled(false);
         setPlayerTurn(true);
@@ -80,27 +85,33 @@ const SimonSaysPage = () => {
 
   useEffect(() => {
     if (playerChoiceArray.length > 0) {
-      console.log("Player choices: " + playerChoiceArray);
       if (playerChoiceArray.length === sequenceArray.length && checkMatchingArrays()) {
-        console.log("Matching Arrays!");
         newRound();
       } else if (checkMatchingArrays()) {
-        console.log("You're doing good!");
       } else {
-        console.log("LOOSER");
+        setGameOver(true);
+        setIsPlaying(false);
       }
     }
   }, [playerChoiceArray, sequenceArray, checkMatchingArrays, newRound]);
 
-  const startGame = () => {
+  const handleStartGame = () => {
+    setSequenceArray([])
+    setGameOver(false);
     setIsPlaying(true);
     newRound();
   };
 
   return (
     <div className={classes.background}>
-      <button onClick={startGame}>Start Game</button>
       <main className={classes.board}>
+        {!isPlaying && (
+          <Modal
+            btnActive={true}
+            handleStartGame={handleStartGame}
+            modalText={gameOver ? endDesc : gameDesc}
+            backColor="#57a759"></Modal>
+        )}
         <Board
           addPlayerChoiceHandler={addPlayerChoiceHandler}
           setRefsHandler={setRefsHandler}
