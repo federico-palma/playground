@@ -22,6 +22,13 @@ const SimonSaysPage = () => {
     return Math.floor(Math.random() * 3);
   };
 
+  const newRound = useCallback(() => {
+    console.log("New Round");
+    setPlayerTurn(false);
+    setPlayerChoiceArray([]);
+    setSequenceArray(prevState => [...prevState, getRandomNum()]);
+  }, []);
+
   // Sequence is played with useEffect whenever the sequenceArray changes.
   const playSequence = useCallback(() => {
     console.log(sequenceArray);
@@ -65,31 +72,25 @@ const SimonSaysPage = () => {
   };
 
   const checkMatchingArrays = useCallback(() => {
-    if (playerChoiceArray === sequenceArray.slice(0, playerChoiceArray.length - 1)) {
+    if (playerChoiceArray.every((value, index) => value === sequenceArray[index])) {
       return true;
     }
     return false;
   }, [playerChoiceArray, sequenceArray]);
 
   useEffect(() => {
-    console.log("Player choices: " + playerChoiceArray);
     if (playerChoiceArray.length > 0) {
-      if (checkMatchingArrays()) {
+      console.log("Player choices: " + playerChoiceArray);
+      if (playerChoiceArray.length === sequenceArray.length && checkMatchingArrays()) {
         console.log("Matching Arrays!");
+        newRound();
+      } else if (checkMatchingArrays()) {
+        console.log("You're doing good!");
+      } else {
+        console.log("LOOSER");
       }
     }
-  }, [playerChoiceArray, checkMatchingArrays]);
-
-  const newRound = () => {
-    console.log("New Round");
-    setPlayerTurn(false);
-    setPlayerChoiceArray([]);
-    setSequenceArray(prevState => {
-      let newNumber = getRandomNum();
-      console.log("new number is: " + newNumber);
-      return [...prevState, newNumber];
-    });
-  };
+  }, [playerChoiceArray, sequenceArray, checkMatchingArrays, newRound]);
 
   const startGame = () => {
     setIsPlaying(true);
