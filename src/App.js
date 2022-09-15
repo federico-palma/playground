@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/" exact>
+        <Route path={["/", "/playground"]} exact>
           <HomePage />
         </Route>
         <Route path="/Etch-a-Sketch" exact>
