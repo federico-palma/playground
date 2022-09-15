@@ -9,7 +9,7 @@
 .card-list {
   padding-top: 70px;
   margin: auto;
-  max-width: 860px;
+  max-width: 560px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,7 +31,7 @@
 
 @media screen and (max-width: 635px) {
   .card-list > a {
-    font-size: 18px;
+    font-size: 14px;
     width: 150px;
     height: 150px;
   }
