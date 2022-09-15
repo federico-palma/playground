@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <header className={`${classes.header} ${setStyleFromPath()}`}>
-      <Link to="/">
+      <Link to="/playground">
         <h1 className={classes.title}>PlayGround!</h1>
       </Link>
     </header>
